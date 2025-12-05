@@ -47,7 +47,6 @@ class _TextPageState extends State<TextPage> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -59,7 +58,7 @@ class _TextPageState extends State<TextPage> {
                             builder: (context) => DatastorePage()));
                     try {
                       await authrepo().creatNotes(workcontroller.text,
-                          datecontroller.text as int, daycontroller.text);
+                          datecontroller.text , daycontroller.text);
 
                       ScaffoldMessenger.of(
                         context,

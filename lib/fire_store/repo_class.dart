@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class authrepo {
-  Future<void> creatNotes(String work, int date, dynamic day) async {
+  Future<void> creatNotes(String work, String date, dynamic day) async {
     try {
       String? userId = FirebaseAuth.instance.currentUser?.uid;
       final docid = FirebaseFirestore.instance
@@ -13,7 +13,7 @@ class authrepo {
       final obj = {
         'id': userId,
         'work': work,
-        'date': 'date',
+        'date': date,
         'day': day,
       };
       await docid.set(obj);
