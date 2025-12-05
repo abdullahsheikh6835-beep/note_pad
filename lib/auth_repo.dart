@@ -24,7 +24,6 @@ class Auth {
       log("our docid is ${folders}");
 
       await docId.set(folders);
-      // .add(folders);
     } catch (e) {
       rethrow;
     }
