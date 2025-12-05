@@ -28,37 +28,33 @@ class _FolderscreenState extends State<Folderscreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
-              CustomText(text: 'Folders adding', Color: AppColors.black ,  fontSize: 18),
-             
+              CustomText(
+                  text: 'Folders adding', Color: AppColors.black, fontSize: 18),
               SizedBox(height: 10),
-
-               customTextField(hint: 'search' , controller: SearchController()),
+              customTextField(hint: 'search', controller: SearchController()),
               SizedBox(height: 10),
-              customTextField(hint: 'All task' , controller:notescontroler  ),
+              customTextField(hint: 'All task', controller: notescontroler),
               SizedBox(height: 10),
-           customTextField(hint: 'New add task' , controller: taskcontroler,),
-
+              customTextField(
+                hint: 'New add task',
+                controller: taskcontroler,
+              ),
               SizedBox(height: 10),
-
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-
-
-
-
-
-                    
                     padding: const EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   onPressed: () async {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboardscreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Dashboardscreen()));
                     try {
                       await Auth().creatNotes(
                         textcontroler.text,
