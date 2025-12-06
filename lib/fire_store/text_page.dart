@@ -58,7 +58,7 @@ class _TextPageState extends State<TextPage> {
                             builder: (context) => DatastorePage()));
                     try {
                       await authrepo().creatNotes(workcontroller.text,
-                          datecontroller.text , daycontroller.text);
+                          datecontroller.text, daycontroller.text);
 
                       ScaffoldMessenger.of(
                         context,

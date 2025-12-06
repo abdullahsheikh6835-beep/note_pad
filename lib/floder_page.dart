@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notesapp/auth_repo.dart';
 import 'package:notesapp/components%20folder/custom_field.dart';
 import 'package:notesapp/components%20folder/custom_text.dart';
+import 'package:notesapp/dashbord_page.dart';
 import 'package:notesapp/utils/app_colors.dart';
 
 class Folderscreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _FolderscreenState extends State<Folderscreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -44,16 +45,16 @@ class _FolderscreenState extends State<Folderscreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   onPressed: () async {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => Dashboardscreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Dashboardscreen()));
                     try {
                       await Auth().creatNotes(
                         textcontroler.text,

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Auth {
-  Future<void> creatNotes(String text, String note, String task) async {
+    Future<void> creatNotes(String text, String note, String task) async {
     try {
       String? userid = FirebaseAuth.instance.currentUser?.uid;
 
@@ -15,7 +15,7 @@ class Auth {
           .doc();
       log("our docid is ${docId.id}");
       log("our dco is ${docId}");
-      Map<String, dynamic> folders = {
+      Map<String, String> folders = {
         "id": docId.id,
         "Text": text,
         "Notes": note,
