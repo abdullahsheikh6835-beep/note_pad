@@ -42,12 +42,16 @@ class Auth {
 
       return noteData.map((data) {
         return data.docs.map((e) => e.data()).toList();
-      });
+      }
+      );
     } catch (e) {
       rethrow;
     }
   }
 }
+
+
+
 
 
 

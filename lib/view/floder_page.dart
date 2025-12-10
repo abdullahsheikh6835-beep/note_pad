@@ -1,52 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:notesapp/components%20folder/custom_field.dart';
 import 'package:notesapp/components%20folder/custom_text.dart';
-import 'package:notesapp/fire_store/datastore_page.dart';
-import 'package:notesapp/fire_store/repo_class.dart';
 import 'package:notesapp/utils/app_colors.dart';
+import 'package:notesapp/view/auth_repo.dart';
+import 'package:notesapp/view/dashbord_page.dart';
 
-class TextPage extends StatefulWidget {
-  const TextPage({super.key});
+class Folderscreen extends StatefulWidget {
+  Folderscreen({super.key});
 
   @override
-  State<TextPage> createState() => _TextPageState();
+  State<Folderscreen> createState() => _FolderscreenState();
 }
 
-class _TextPageState extends State<TextPage> {
+class _FolderscreenState extends State<Folderscreen> {
+  TextEditingController textcontroler = TextEditingController();
+  TextEditingController notescontroler = TextEditingController();
+  TextEditingController taskcontroler = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController workcontroller = TextEditingController();
-    TextEditingController datecontroller = TextEditingController();
-    TextEditingController daycontroller = TextEditingController();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: CustomText(
-            text: 'Your daily shedule', Color: AppColors.black, fontSize: 18),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              CustomText(
+                  text: 'Folders adding', Color: AppColors.black, fontSize: 18),
+              SizedBox(height: 10),
+              customTextField(hint: 'search', controller: SearchController()),
+              SizedBox(height: 10),
+              customTextField(hint: 'All task', controller: notescontroler),
+              SizedBox(height: 10),
               customTextField(
-                  hint: 'your daily work', controller: workcontroller),
-              SizedBox(
-                height: 30,
+                hint: 'New add task',
+                controller: taskcontroler,
               ),
-              customTextField(hint: 'Date', controller: datecontroller),
-              SizedBox(
-                height: 30,
-              ),
-              customTextField(hint: 'Day', controller: daycontroller),
-              SizedBox(
-                height: 30,
-              ),
+              SizedBox(height: 10),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
+                    padding: EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -55,10 +52,13 @@ class _TextPageState extends State<TextPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DatastorePage()));
+                            builder: (context) => Dashboardscreen()));
                     try {
-                      await authrepo().creatNotes(workcontroller.text,
-                          datecontroller.text, daycontroller.text);
+                      await Auth().creatNotes(
+                        textcontroler.text,
+                        taskcontroler.text,
+                        notescontroler.text,
+                      );
 
                       ScaffoldMessenger.of(
                         context,
@@ -70,7 +70,7 @@ class _TextPageState extends State<TextPage> {
                     }
                   },
                   child: Text(
-                    "Add shedule",
+                    "ADD Folders",
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
