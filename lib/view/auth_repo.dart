@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Auth {
-    Future<void> creatNotes(String text, String note, String task) async {
+  Future<void> creatNotes(String text, String note, String task) async {
     try {
       String? userid = FirebaseAuth.instance.currentUser?.uid;
 
@@ -42,8 +42,7 @@ class Auth {
 
       return noteData.map((data) {
         return data.docs.map((e) => e.data()).toList();
-      }
-      );
+      });
     } catch (e) {
       rethrow;
     }

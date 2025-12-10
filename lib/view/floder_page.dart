@@ -37,7 +37,7 @@ class _FolderscreenState extends State<Folderscreen> {
                 hint: 'New add task',
                 controller: taskcontroler,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -59,7 +59,6 @@ class _FolderscreenState extends State<Folderscreen> {
                         taskcontroler.text,
                         notescontroler.text,
                       );
-
                       ScaffoldMessenger.of(
                         context,
                       ).showSnackBar(SnackBar(content: Text("add task")));
